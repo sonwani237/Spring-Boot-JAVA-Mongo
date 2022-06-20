@@ -10,4 +10,8 @@ public interface PostDAL {
     List<Post> getPosts(String userId);
 
     Post addPost(Post post);
+
+    Post likePost(String userId, String postId);
+
+    Post disLikePost(String userId, String postId);
 }

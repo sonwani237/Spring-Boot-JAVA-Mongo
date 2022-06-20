@@ -26,6 +26,18 @@ public class PostController {
         return ResponseEntity.ok(new ResponseModel(true, "Success", postDAL.getAllPosts(userDetails.getId())));
     }
 
+    @GetMapping("/likePost/{postId}")
+    public ResponseEntity<?> likePost(@Valid @PathVariable String postId,Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        return ResponseEntity.ok(new ResponseModel(true, "Success", postDAL.likePost(userDetails.getId(), postId)));
+    }
+
+    @GetMapping("/disLikePost/{postId}")
+    public ResponseEntity<?> disLikePost(@Valid @PathVariable String postId,Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        return ResponseEntity.ok(new ResponseModel(true, "Success", postDAL.disLikePost(userDetails.getId(), postId)));
+    }
+
     @GetMapping("/getPosts")
     public ResponseEntity<?> getPosts(Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();

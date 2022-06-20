@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
@@ -56,6 +57,7 @@ public class ProductRepository implements ProductDAL {
         query.addCriteria(where("_id").is(id));
         Update update = new Update();
         update.set("status", status);
+        update.set("updatedOn", new Date());
         return mongoTemplate.findAndModify(query, update, FavouriteProduct.class);
     }
 
@@ -65,6 +67,7 @@ public class ProductRepository implements ProductDAL {
         query.addCriteria(where("_id").is(id));
         Update update = new Update();
         update.set("status", 0);
+        update.set("updatedOn", new Date());
         return mongoTemplate.findAndModify(query, update, FavouriteProduct.class);
     }
 
