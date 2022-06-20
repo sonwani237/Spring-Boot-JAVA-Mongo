@@ -1,0 +1,18 @@
+debug: true
+
+server:
+  port: 8082
+
+spring:
+  data:
+    mongodb:
+      database: spring_db
+      host: localhost
+      port: 27017
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: INFO
