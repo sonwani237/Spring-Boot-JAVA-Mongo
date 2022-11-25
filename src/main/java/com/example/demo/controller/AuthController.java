@@ -48,6 +48,11 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtUtils;
 
+	@GetMapping("/test")
+	public String authenticateUser() {
+		return "Happy Man";
+	}
+
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 		try {
